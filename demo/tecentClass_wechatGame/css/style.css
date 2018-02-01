@@ -30,8 +30,41 @@
     display:inline-block;
     background-size:cover;
 }
+/*icon样式*/
+
+.icon-back{
+    width:20px;
+    height:20px;
+    background-image: url(../img/icon-back.png);
+}
+.icon-person{
+    width:25px;
+    height:25px;
+    background-image: url(../img/icon-person.png);
+}
+.icon-talk{
+    width:25px;
+    height:25px;
+    background-image: url(../img/icon-talk.png);
+}
+.icon-smile{
+    width:25px;
+    height:25px;
+    background-image: url(../img/icon-smile.png);
+}
+.icon-add{
+    width:25px;
+    height:25px;
+    background-image: url(../img/icon-add.png);
+}
+/*微信聊天窗口*/
+
+/*.wechat-page.selecting .wechat-input{*/
+    /*bottom:*/
+/*}*/
 
 /*头部样式*/
+
 .nav{
     width:100%;
     height:50px;
@@ -48,11 +81,6 @@
     align-items: center;
     font-size:16px;
 }
-.icon-back{
-    width:20px;
-    height:20px;
-    background-image: url(../img/icon-back.png);
-}
 .nav-name{
      position: absolute;
      left: 50%;
@@ -64,17 +92,15 @@
     display: flex;
     align-items: center;
 }
-.icon-person{
-    width:25px;
-    height:25px;
-    background-image: url(../img/icon-person.png);
-}
+
+/*消息列表*/
+
 .chat-list{
     position: fixed;
     top:50px;
     left:0;
     right:0;
-    bottom:50px;
+    bottom:45px;
     background-color:#efefef;
 }
 .message-item{
@@ -112,7 +138,6 @@
     top:11px;
     background-color: #9eea6a;
 }
-
 .message-bubble{
     position:relative;
     max-width: 250px;
@@ -126,4 +151,50 @@
 .message-item-right .message-bubble{
     background-color: #9eea6a;
     border-color:#9eea6a;
+}
+
+/*消息输入框*/
+
+.wechat-input{
+    width:100%;
+    height:45px;
+    position: absolute;
+    bottom:0;
+    display: flex;
+    justify-content: center;
+    border-top:1px solid #ebebeb;
+    z-index: 99;
+    background-color: #f4f4f4;
+}
+.wechat-input > *{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wechat-input .icon{
+    width:30px;
+    height:30px;
+}
+.wechat-input-txt>input{
+    width: 100%;
+    border:none;
+    border-bottom:1px solid #d8d8d8;
+    background-color: transparent;
+}
+.wechat-input-txt{
+    flex:4;
+}
+
+.select-list{
+    width:100%;
+    top:45px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-around;
+    border-top: 1px solid #ebebeb;
+}
+.select-list .avatar{
+    margin:0 0 0 10px;
 }
