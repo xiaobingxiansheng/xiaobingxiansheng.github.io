@@ -59,9 +59,22 @@
 }
 /*微信聊天窗口*/
 
-/*.wechat-page.selecting .wechat-input{*/
-    /*bottom:*/
-/*}*/
+.wechat-page{
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    position:fixed;
+}
+
+.wechat-page.selecting .wechat-input{
+    bottom: 190px;
+    transition: bottom 0.5s;
+}
+.wechat-page.selecting .chat-list{
+    bottom: 235px;
+    transition: bottom 0.5s;
+}
 
 /*头部样式*/
 
@@ -106,7 +119,7 @@
 .message-item{
     display: flex;
     align-items: center;
-    margin-top:10px;
+    margin:10px 0;
 }
 .avatar{
     width:40px;
