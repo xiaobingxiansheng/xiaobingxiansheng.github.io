@@ -1,0 +1,129 @@
+.first-page{
+    position: fixed;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FFFFFF;
+}
+.first-page>p{
+    padding:0 20px;
+    font-size:15px;
+}
+.first-page>input{
+    font-size:13px;
+    border:1px solid #ccc;
+    background-color: transparent;
+    padding:5px 10px;
+    margin:20px;
+}
+/*通用样式*/
+.hide{
+    display: none;
+}
+.icon{
+    margin:0 8px;
+    display:inline-block;
+    background-size:cover;
+}
+
+/*头部样式*/
+.nav{
+    width:100%;
+    height:44px;
+    position: fixed;
+    top:0;
+    left:0;
+    display: flex;
+    justify-content: space-between;
+    background-color:#2b2b2b;
+    color:white;
+}
+.nav-back{
+    display: flex;
+    align-items: center;
+    font-size:16px;
+}
+.icon-back{
+    width:18px;
+    height:18px;
+    background-image: url(../img/icon-back.png);
+}
+.nav-name{
+     position: absolute;
+     left: 50%;
+     transform: translateX(-50%);
+     line-height: 44px;
+     font-size:18px;
+}
+.nav-person{
+    display: flex;
+    align-items: center;
+}
+.icon-person{
+    width:25px;
+    height:25px;
+    background-image: url(../img/icon-person.png);
+}
+.chat-list{
+    position: fixed;
+    top:44px;
+    left:0;
+    right:0;
+    bottom:50px;
+    background-color:#efefef;
+}
+.message-item{
+    display: flex;
+    align-items: center;
+    margin-top:10px;
+}
+.avatar{
+    width:40px;
+    height:40px;
+    margin:0 10px;
+}
+.message-item-right{
+    flex-direction: row-reverse;
+}
+.message-item .message-bubble:before{
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width:7px;
+    height:7px;
+    transform: rotate(-45deg);
+}
+.message-item-left .message-bubble:before {
+    border-top:1px solid #ddd;
+    border-left:1px solid #ddd;
+    left:-5px;
+    top:11px;
+    background-color: #fff;
+}
+.message-item-right .message-bubble:before {
+    border-bottom:1px solid #e2ffd3;
+    border-right:1px solid #e2ffd3;
+    right:-5px;
+    top:11px;
+    background-color: #9ce755;
+}
+
+.message-bubble{
+    position:relative;
+    max-width: 250px;
+    padding:8px;
+    border:1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size:16px;
+    /*font-weight: bolder;*/
+}
+.message-item-right .message-bubble{
+    background-color: #9ce755;
+    border-color:#e2ffd3;
+}
