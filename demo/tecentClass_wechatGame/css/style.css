@@ -106,11 +106,11 @@
     background-color: #fff;
 }
 .message-item-right .message-bubble:before {
-    border-bottom:1px solid #e2ffd3;
-    border-right:1px solid #e2ffd3;
+    border-bottom:1px solid #9eea6a;
+    border-right:1px solid #9eea6a;
     right:-5px;
     top:11px;
-    background-color: #9ce755;
+    background-color: #9eea6a;
 }
 
 .message-bubble{
@@ -124,6 +124,6 @@
     /*font-weight: bolder;*/
 }
 .message-item-right .message-bubble{
-    background-color: #9ce755;
-    border-color:#e2ffd3;
+    background-color: #9eea6a;
+    border-color:#9eea6a;
 }
