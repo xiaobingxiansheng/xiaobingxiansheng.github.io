@@ -74,11 +74,11 @@
 
 .wechat-page.selecting .wechat-input{
     bottom: 190px;
-    transition: bottom 0.5s;
+    transition: bottom 0.3s;
 }
 .wechat-page.selecting .chat-list{
     bottom: 235px;
-    transition: bottom 0.5s;
+    transition: bottom 0.3s;
 }
 
 /*头部样式*/
@@ -121,6 +121,7 @@
     bottom:45px;
     overflow-y: scroll;
     background-color:#efefef;
+    transition: bottom 0.3s;
 }
 .message-item{
     display: flex;
@@ -184,6 +185,7 @@
     border-top:1px solid #ebebeb;
     z-index: 99;
     background-color: #f4f4f4;
+    transition: bottom 0.3s;
 }
 .wechat-input > *{
     display: flex;

@@ -5,6 +5,8 @@
 
 let score = 0;
 let step = 0;
+let scrollBottomTimitor = null;
+let scrollBottomTimerNum = 0;
 const firstPage = $(".first-page");
 const wechatPage = $(".wechat-page");
 const selectList = $(".select-list");
@@ -90,9 +92,16 @@ function timerDomMessage(callback,timeout){
  */
 function scrollBottom(timer){
      typeof timer!="undefined"? (function(){
-       setTimeout(()=>{
+         scrollBottomTimitor = setInterval(()=>{//持续的让他置于底下
            chatList.scrollTop = chatList.scrollHeight;
-         },timer);
+           scrollBottomTimerNum+=100;
+           if(scrollBottomTimerNum>=timer){//当时间到达就停止
+               //清零
+               scrollBottomTimerNum = 0;
+               scrollBottomTimitor = null;
+               clearInterval(scrollBottomTimitor);
+           }
+         },30);
      })():chatList.scrollTop = chatList.scrollHeight;
 }
 
@@ -179,7 +188,7 @@ function oneStep(){
     const curMessage = data.messages[step];
     timerDomMessage(()=> {
         appendDomMessage('left',curMessage.left);
-        scrollBottom(499);
+        scrollBottom(500);
         toggleSelector(true);
     },700);
     changeSelector();
