@@ -8,7 +8,8 @@ let step = 0;
 const firstPage = $(".first-page");
 const wechatPage = $(".wechat-page");
 const selectList = $(".select-list");
-
+const wechatTitle = $("#wechat-title");
+const chatList = $(".chat-list");
 /**
  * 填入字符串模板获取DOM
  * @param str
@@ -46,9 +47,9 @@ function getDomMessage(side,str){
  * @param score
  * @returns {string}
  */
-function getSelectorMessage(str,score){
+function getSelectorMessage(str,index,score){
     const template = `
-        <div class="message-item message-item-right js-select-item" data-score="${score}">
+        <div class="message-item message-item-right js-select-item" data-score="${score}" data-index="${index}">
             <img class="avatar" src="${RIGHT_IMG}" alt="这是一个头像">
             <div class="message-bubble">
                 <p class="message-bubble-txt">
@@ -67,8 +68,34 @@ function getSelectorMessage(str,score){
  */
 function appendDomMessage(side,str){
     let dom = getDomMessage(side,str);
-    $(".chat-list").appendChild(dom);
+    chatList.appendChild(dom);
+    scrollBottom();
 }
+
+/**
+ * 正在输入中..
+ * @param callback
+ */
+function timerDomMessage(callback,timeout){
+    wechatTitle.innerHTML = "对方正在输入..";
+    setTimeout(()=>{
+        wechatTitle.innerHTML = WECHAT_TITLE;
+        callback&&callback();
+},timeout);
+}
+
+
+/**
+ * 置底动画
+ */
+function scrollBottom(timer){
+     typeof timer!="undefined"? (function(){
+       setTimeout(()=>{
+           chatList.scrollTop = chatList.scrollHeight;
+         },timer);
+     })():chatList.scrollTop = chatList.scrollHeight;
+}
+
 
 /**
  * 用来存放所有的事件
@@ -93,9 +120,14 @@ function event(){
         let currentTarget = e.currentTarget;
         while(target!==currentTarget){
             if(hasClass(target,"js-select-item")){
-                score += +target.getAttribute("data-score");
+                let curScore = +target.getAttribute("data-score");
+                let curIndex = +target.getAttribute("data-index");
+                score += curScore;
                 appendDomMessage('right',target.innerText);
-                nextStep();
+                timerDomMessage(()=> {
+                    appendDomMessage('left', data.messages[step].right[curIndex].say);
+                    nextStep();
+                },700);
                 return ;
             }
             target = target.parentNode;
@@ -108,8 +140,8 @@ function event(){
 function changeSelector(){
     const currentStepMessage = data.messages[step].right;
     let html = '';
-    currentStepMessage.forEach((msg)=>{
-        html+= getSelectorMessage(msg.text,msg.score);
+    currentStepMessage.forEach((msg,index)=>{
+        html+= getSelectorMessage(msg.text,index,msg.score);
     });
     selectList.innerHTML = html;
 }
@@ -133,6 +165,7 @@ function nextStep(){
     step+=1;
     if(step<data.messages.length){
         toggleSelector(false);
+        scrollBottom()
         oneStep();
     }else{
         alert(score);
@@ -144,10 +177,11 @@ function nextStep(){
  */
 function oneStep(){
     const curMessage = data.messages[step];
-    setTimeout(()=>{
+    timerDomMessage(()=> {
         appendDomMessage('left',curMessage.left);
+        scrollBottom(499);
         toggleSelector(true);
-    },300);
+    },700);
     changeSelector();
 }
 

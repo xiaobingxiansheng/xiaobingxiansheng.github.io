@@ -1,56 +1,69 @@
 /**
  * Created by lenovo on 2018/2/2.
  */
-const LEFT_IMG = "img/avatar-gtl.jpg";
-const RIGHT_IMG = "img/avatar-zzf.jpg";
+const LEFT_IMG = "img/avatar-pai.jpg";
+const RIGHT_IMG = "img/avatar-dnp.jpg";
+const WECHAT_TITLE = "Faith";
 const data = {
     messages: [{
-        left: '工作怎么样呀？',
+        left: '我和你谁是傻逼？',
         right: [{
-            text: '不如您家孩子厉害，还要继续学习',
-            score: 3
+            text: '你是',
+            score: -10,
+            say:"cnm"
         }, {
-            text: '一般啦，比您家孩子好一点。',
-            score: -2
+            text: '我是',
+            score: 10,
+            say:""
         }, {
-            text: '领导经常叫我加班',
-            score: 1
+            text: '我们都是好吧',
+            score: -5,
+            say:"我能跟你一样吗？"
         }]
     }, {
-        left: '有对象了吗？',
+        left: '你是谁？',
         right: [{
-            text: '被你家孩子租回家过年了。',
-            score: -2
+            text: 'DNP',
+            score: 10,
+            say:"原来是你啊.. 有点不想给"
         }, {
-            text: '我还是个孩子，妈妈说不要早恋',
-            score: 1
+            text: '卡哥',
+            score: 20,
+            say:"恩恩.．我知道了"
         }, {
-            text: '对象对我挺好的，谢谢关心。',
-            score: 3
+            text: '毛毛',
+            score: 10,
+            say:"原来是垃圾毛啊.. 有点不想给"
         }]
     }, {
-        left: '工资多少啊？',
+        left: '问你一句.. 我帅不帅？',
         right: [{
-            text: '刚好比你家孩子多那么一点。',
-            score: -2
+            text: '嗯.. 帅',
+            score: -10,
+            say:"哇 这么敷衍"
         }, {
-            text: '一般，我刚买了个表',
-            score: 1
+            text: '当然帅啦',
+            score:20,
+            say:"哎哟~ (得意脸)"
         }, {
-            text: '不多，刚好够基本生活。',
-            score: 3
+            text: '....',
+            score: -5,
+            say:"..."
         }]
     }, {
-        left: '明年有什么打算呢？',
+        left: '我的球技如何？',
         right: [{
-            text: '还没有什么打算。',
-            score: 1
+            text: '烂',
+            score: -10,
+            say:"哇.. 虐翻你"
         }, {
-            text: '多多努力，向您学习。',
-            score: 3
+            text: '要向你学习啊',
+            score: 10,
+            say:"嗯..你真会说话 "
         }, {
-            text: '凑钱把房子买了，阿姨打算给我多少红包呀？',
-            score: -2
+            text: '一般般',
+            score: -5,
+            say:"欸."
         }]
     }],
     result: [{
