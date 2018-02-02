@@ -98,8 +98,8 @@ function scrollBottom(timer){
            if(scrollBottomTimerNum>=timer){//当时间到达就停止
                //清零
                scrollBottomTimerNum = 0;
-               scrollBottomTimitor = null;
                clearInterval(scrollBottomTimitor);
+               scrollBottomTimitor = null;
            }
          },30);
      })():chatList.scrollTop = chatList.scrollHeight;
