@@ -284,6 +284,7 @@
 }
 .aboutPage{
     display: flex;
+    justify-content: center;
     align-items: center;
     z-index: 99;
     background-color: rgba(164,164,165,0.2);
