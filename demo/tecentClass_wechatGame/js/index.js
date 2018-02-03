@@ -220,7 +220,15 @@ function event(){
     });
     $(".aboutPage").addEventListener("touchend",(e)=>{
         addClass($(".aboutPage"),"hide");
-    })
+    });
+
+    /**
+     * 返回按钮
+     */
+    $("#wechat-back-btn").addEventListener("touchend",(e)=>{
+       removeClass(firstPage,"hide");
+        removeClass(firstPage,"fadeOut");
+    });
 }
 
 
