@@ -103,7 +103,7 @@ function scrollBottom(timer){
      typeof timer!="undefined"? (function(){
          scrollBottomTimitor = setInterval(()=>{//持续的让他置于底下
            chatList.scrollTop = chatList.scrollHeight;
-           scrollBottomTimerNum+=100;
+           scrollBottomTimerNum+=30;
            if(scrollBottomTimerNum>=timer){//当时间到达就停止
                //清零
                scrollBottomTimerNum = 0;
