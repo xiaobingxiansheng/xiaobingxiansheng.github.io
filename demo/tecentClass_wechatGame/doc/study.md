@@ -30,4 +30,9 @@ ES6的函数声明不需要依赖的当前作用域，所以可以看到为什�
 3.ES6字符串模板
 4.let，const声明变量
 5.target,cuurentTarget区别
+6.every,forEach区别
+没有办法中止或者跳出 forEach 循环，除了抛出一个异常。如果你需要这样，使用forEach()方法是错误的，
+你可以用一个简单的循环作为替代。如果您正在测试一个数组里的元素是否符合某条件，且需要返回一个布尔值，
+那么可使用 Array.every 或 Array.some。如果可用，新方法 find() 或者findIndex() 也可被用于真值测试的提早终止。
+7.事件委托
 

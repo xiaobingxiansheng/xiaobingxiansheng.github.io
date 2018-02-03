@@ -7,11 +7,17 @@ let score = 0;
 let step = 0;
 let scrollBottomTimitor = null;
 let scrollBottomTimerNum = 0;
+let curPrizeTips = '';
+let isPrizereviced = false;
+let isSee = false;
 const firstPage = $(".first-page");
 const wechatPage = $(".wechat-page");
 const selectList = $(".select-list");
 const wechatTitle = $("#wechat-title");
 const chatList = $(".chat-list");
+const ResultElem = $(".showResult");
+const showResultPrizeButton = $("#showResult-prize-button");
+const showPrize = $('.showPrize');
 /**
  * 填入字符串模板获取DOM
  * @param str
@@ -72,6 +78,9 @@ function appendDomMessage(side,str){
     let dom = getDomMessage(side,str);
     chatList.appendChild(dom);
     scrollBottom();
+    if(side=='left'){//如果是左边信息就发出声音
+        MakeWechatSound();
+    }
 }
 
 /**
@@ -142,6 +151,114 @@ function event(){
             target = target.parentNode;
         }
     });
+
+    /**
+     * 奖品打开
+     */
+    showResultPrizeButton.addEventListener("touchend",(e)=>{
+        if(isPrizereviced){//是否已经打开过了
+            removeClass(showPrize,'hide');
+            removeClass(showPrize,'fadeOut');
+
+        }else{
+            let result = data.result;
+            let prizelevel;
+            let prizeRadomObj;
+            //判断分数并获取级别
+            for(var index in result){
+                if(result[index].score<=score){
+                    prizelevel = result[index].prizeLevel;
+                    break;
+                }
+            }
+            prizeRadomObj = getRadomPrizeObjByLevel(prizelevel);
+            curPrizeTips = prizeRadomObj.tips;
+            appendDomMessage('left',curPrizeTips);
+            appendPrizeDom(prizeRadomObj);
+            removeClass(showPrize,'hide');
+            togglePrizeSwitch();
+        }
+    });
+
+    /**
+     * 奖品点击
+     */
+    showPrize.addEventListener('touchend',(e)=>{
+        addClass(showPrize,'fadeOut');
+        setTimeout(()=>{
+            addClass(showPrize,'hide');
+        },300)
+    });
+
+    /**
+     * 重新开始
+     */
+    $("#rePlayBtn").addEventListener('touchend',(e)=>{
+        window.location.href = window.location.href;
+    });
+
+    /**
+     * 透明窗体
+     */
+    $("#seeLeftMessage").addEventListener("touchend",(e)=>{
+        isSee = !isSee;
+        if(isSee){
+            addClass($("#seeLeftMessage"),"icon-eye");
+            addClass($(".showResult-div"),'opacityHalf');
+            removeClass($("#seeLeftMessage"),"icon-noeye");
+        }else{
+            addClass($("#seeLeftMessage"),"icon-noeye");
+            removeClass($(".showResult-div"),'opacityHalf');
+            removeClass($("#seeLeftMessage"),"icon-eye");
+        }
+    });
+    /**
+     * 关于这款软件
+     */
+    $("#wechat-about-btn").addEventListener("touchend",(e)=>{
+        removeClass($(".aboutPage"),"hide");
+    });
+    $(".aboutPage").addEventListener("touchend",(e)=>{
+        addClass($(".aboutPage"),"hide");
+    })
+}
+
+
+/**
+ *发出声音
+ */
+function MakeWechatSound(){
+    let audio = document.getElementById("wechat_audio");
+    audio.play();
+}
+
+/**
+ * 切换奖品开关
+ */
+function togglePrizeSwitch(){
+    isPrizereviced = !isPrizereviced;
+}
+
+/**
+ * 根据级别获取随机奖品
+ * @param level
+ * @returns {*}
+ */
+function getRadomPrizeObjByLevel(level){
+    let resultPrize = data.prize[level];
+    return resultPrize[ Math.floor( Math.random()*resultPrize.length ) ];
+}
+
+function appendPrizeDom(prizeObj){
+    let src = prizeObj.src;
+    let type = prizeObj.type;
+    let sourceObj = null;
+    if(type=='img'){
+        sourceObj = document.createElement('img');
+        sourceObj.src = src;
+        showPrize.appendChild(sourceObj);
+    }
+
 }
 /**
  * 选择列表内容切换
@@ -177,7 +294,7 @@ function nextStep(){
         scrollBottom()
         oneStep();
     }else{
-        alert(score);
+        showResult();
     }
 }
 
@@ -192,6 +309,16 @@ function oneStep(){
         toggleSelector(true);
     },700);
     changeSelector();
+}
+
+/**
+ * 成功展示
+ */
+function showResult(){
+    removeClass(ResultElem,'hide');
+    setTimeout(()=>{
+        addClass(ResultElem,'fadeIn');
+    },100);
 }
 
 /**

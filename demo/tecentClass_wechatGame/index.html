@@ -5,24 +5,25 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://8.url.cn/edu/classroom/assets/lib/reset.css">
+    <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <title>乐天湃</title>
 </head>
 <body>
-    <section class="first-page">
+    <section class="page first-page">
         <p>这系一款你没有玩过的船新版本，你只需体验三番钟，你造会干我一样，爱尚节款游戏~~</p>
         <p>您只需要讨好湃哥就好了！有机会获得他的珍藏写真集册以及音乐专辑哦！</p>
+        <p>[注]湃哥不是一般人，小心吃不了兜着走</p>
         <input type="button" value="点击继续">
     </section>
-    <section class="wechat-page">
+    <section class="page wechat-page">
         <header class="nav">
             <div class="nav-back">
                 <i class="icon icon-back"></i>
                 <span>微信</span>
             </div>
             <h1 class="nav-name" id="wechat-title">Faith</h1>
-            <div class="nav-person">
+            <div id="wechat-about-btn" class="nav-person">
                 <i class="icon icon-person"></i>
             </div>
         </header>
@@ -45,6 +46,40 @@
         <main class="chat-list">
         </main>
     </section>
+    <section class="page showResult hide">
+        <div class="showResult-div">
+            <button id="showResult-prize-button">
+                <i class="icon icon-success"></i>
+            </button>
+            <!--<i class="icon icon-failed"></i>-->
+            <p>点击即可获得精美礼品</p>
+            <p>希望作者在做些什么吗？</p>
+            <div class="showResult-input">
+                <i id="rePlayBtn" class="icon icon-reset"></i>
+                <i id="seeLeftMessage" class="icon icon-noeye"></i>
+            </div>
+        </div>
+    </section>
+    <section class="page showPrize hide">
+    </section>
+    <section class="page aboutPage hide">
+
+        <div class="about-container">
+            <div class="about-avatar">
+                <img src="img/avatar-pai.jpg" alt="">
+            </div>
+            <div>
+                <p>作者：你猜</p>
+                <p>作品有点可能会有错漏，没有考虑兼容性的问题，更多地时间放在了游戏的趣味性上了</p>
+                <p>如果有什么得罪的地方..关我叼事..</p>
+                <p>开玩笑的.. 本APP仅用于娱乐使用，不外传。</p>
+                <p>还有.. 湃哥是我男神！</p>
+                <p>同时欢迎指正和建议，也欢迎为我们增添更有趣味性的内容！</p>
+            </div>
+
+        </div>
+    </section>
+    <audio id="wechat_audio" src="media/wechat_sound.mp3"></audio>
     <script src="js/config.js"></script>
     <script src="js/defaultInterface.js"></script>
     <script src="js/index.js"></script>
