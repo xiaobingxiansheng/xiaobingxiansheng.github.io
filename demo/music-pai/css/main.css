@@ -1,0 +1,357 @@
+h1,h2,h3{
+    line-height: 1.5;
+}
+@keyframes circling {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    to {
+        /**
+       旋转1圈
+         */
+        -webkit-transform: rotate(1turn);
+        transform: rotate(1turn)
+    }
+}
+.icon{
+    width:20px;
+    height:20px;
+    background-size: cover;
+    display: inline-block;
+}
+.icon-start{
+    background-image: url("../img/controls/start.png");
+}
+.icon-pause{
+    background-image: url("../img/controls/pause.png");
+}
+.icon-back{
+    width:16px;
+    height:16px;
+    background-image: url("../img/listenning/back.png");
+}
+.icon-share{
+    width:16px;
+    height:16px;
+    background-image: url("../img/listenning/share.png");
+}
+.icon-soundStart{
+    background-image: url("../img/listenning/start.png");
+}
+.icon-soundforWard{
+    background-image: url("../img/listenning/forward.png");
+}
+.icon-soundNext{
+    background-image: url("../img/listenning/next.png");
+}
+.icon-soundMore{
+    background-image: url("../img/listenning/more.png");
+}
+.icon-soundRadom{
+    background-image: url("../img/listenning/radom.png");
+}
+.icon-youb{
+    background-image: url("../img/listenning/youb.png");
+}
+.first-title{
+    color:#545454;
+    font-size:16px;
+}
+.second-title{
+    color:#9c9c9c;
+    font-size:16px;
+}
+.toast{
+    position: fixed;
+    width:90%;
+    bottom:100px;
+    left:50%;
+    border-radius: 30px;
+    transform: translateX(-50%);
+    display: inline-block;
+    padding:10px 25px;
+    text-align: center;
+    background-color:#838383;
+    color:white;
+    transition: all 0.5s;
+    opacity: 0;
+}
+.fadeIn{
+    opacity: 1!important;
+}
+.fadeOut{
+    opacity: 0!important;
+}
+.wrap{
+    position:fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    z-index:99;
+}
+.dis-no{
+    display: none!important;
+}
+body{
+    background-color: #f0f5f3;
+}
+/**
+播放列表
+ */
+.allStartMusic{
+padding:10px 0 10px 15px;
+}
+.allStartMusic>h1{
+font-size:15px;
+}
+.music-list-container{
+    padding-left:15px;
+}
+.music-list-item{
+    height: 70px;
+    border-top:1px solid #dce1df;
+    display: flex;
+    align-items: center;
+}
+
+/**
+尾部
+播放控件
+ */
+footer{
+    display: flex;
+    position: fixed;
+    align-items: center;
+    width:100%;
+    height:65px;
+    padding:5px;
+    bottom:0;
+    background:#fff;
+}
+.music-info{
+    display: flex;
+    flex:1;
+    align-items: center;
+}
+.music-info>hgroup{
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.music-info-AlbumImg{
+    width:50px;
+    height:50px;
+}
+.music-control-circle{
+    width:40px;
+    height:40px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/***
+播放页
+ */
+.music-listenning{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding:0 15px;
+    background-color: #3b3e3d;
+    opacity: 0;
+    transition:opacity 0.3s;
+}
+.music-listenning-header{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: #3b3e3d;
+    z-index: 99;
+    position: relative;
+}
+.music-listenning-header>hgroup{
+    flex:1;
+    text-align: left;
+    text-indent:2em;
+    padding:10px 0;
+    border-bottom: 1px solid #999a97;
+
+}
+.listenning-name{
+    color:white;
+}
+.listenning-author{
+    color:#999a97;
+}
+.sound-record-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top:100px;
+}
+.outer-sound-light{
+    width:100%;
+    height:100%;
+    position: absolute;
+    z-index:10;
+    background-image: url("../img/listenning/disc_light.png");
+    background-size:contain;
+}
+.outer-sound-record{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:243px;
+    height:243px;
+    border-radius: 50%;
+    background: url("../img/listenning/disc-plus.png");
+    background-size:contain;
+}
+.inner-sound-record{
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: url(../img/listenning/disc_default.png);
+    background-size: cover;
+    overflow: hidden;
+}
+.sound-record-container:before{
+    /**
+    为什么要添加在这个唱片容器之后呢？ 因为唱片在旋转的时候，就算贴片是fixed也会随之旋转，所以加在这里是最合适的
+     */
+    content: '';
+    position:fixed;
+    z-index: 9;
+    width: 100px;
+    height: 142px;
+    top: 70px;
+    transform: rotate(-25deg);
+    /*变换中心*/
+    transform-origin:0 0;
+    background: url("../img/listenning/needle-plus.png");
+    background-size:cover;
+    transition:all 0.5s ;
+}
+.music-listenning.listenning>.sound-record-container:before{
+    transform: rotate(0deg);
+}
+.music-listenning.listenning>.sound-record-container>.outer-sound-record,
+.music-listenning.listenning>.sound-record-container>.outer-sound-record>.outer-sound-light,
+.music-listenning.listenning>.sound-record-container>.inner-sound-record{
+    animation:circling 20s infinite linear;
+}
+.sound-controls{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    bottom: 50px;
+    position: absolute;
+    width:90%;
+    margin:0 auto;
+    padding-top:10px;
+}
+.sound-controls>.icon{
+    width:20px;
+    height:20px;
+}
+.sound-controls>.icon-soundState{
+    width:42px;
+    height:42px;
+    background-image: url("../img/listenning/start.png");
+}
+.music-listenning.listenning>.sound-controls>.icon-soundState{
+    background-image: url("../img/listenning/pause.png");
+}
+.sound-range{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 100px;
+    position: absolute;
+    width:90%;
+    margin:0 auto;
+    padding:15px 0;
+}
+.sound-range>span{
+    flex: 1;
+    text-align: center;
+    color:white;
+}
+.circle-range{
+    width:10px;
+    height:10px;
+    position: absolute;
+    left:0;
+    margin: -3px 0 0 -4px;
+    z-index: 2;
+    border-radius:50%;
+    background-color:#fff;
+}
+.sound-range-comment{
+    flex:4;
+    position: relative;
+    height: 4px;
+    background-color: white;
+}
+.full-rectangle-range{
+    height: 100%;
+    background-color: #efeecd;
+    z-index: 1;
+    position: absolute;
+}
+
+/**
+鬼畜模式
+ */
+.Kichiku{
+    position: absolute;
+    display: flex;
+    width: 60%;
+    bottom: 170px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Kichiku-title{
+    width:100%;
+    display: flex;
+    justify-content: center;
+}
+.Kichiku-title>span{
+    flex:1;
+    text-align: center;
+    color:white;
+}
+.Kichiku-title>span:first-child{
+    text-align: left;
+}
+.Kichiku-title>span:last-child{
+    text-align: right;
+}
+.Kichiku-kedu>span>.icon-youb{
+    position: absolute;
+    top:0;
+    left:50%;
+    transform: translate(-50%,-125%);
+    width:15px;
+    height:15px;
+}
+.Kichiku-kedu{
+    width:100%;
+    height:4px;
+    margin: 5px 0;
+    position: relative;
+    border-radius: 20px;
+    background-color: #fff;
+}
