@@ -93,32 +93,34 @@ function getMusicSoundControlsTemplete(){
                 </div>
             </div>
         </div>
-        <div class="Kichiku">
-            <div class="Kichiku-kedu">
-                <span><i class="icon icon-youb"></i></span>
-            </div>
-            <div class="Kichiku-title">
-                <span>慢</span>
-                <span>中</span>
-                <span>快</span>
-            </div>
-        </div>
-        <div class="sound-range">
-            <span class="sound-range-curTime">00:00</span>
-            <div class="sound-range-comment">
-                <div class="circle-range"></div>
-                <div class="rectangle-range">
-                    <div class="full-rectangle-range"></div>
+        <div class="sound-controls-container">
+            <div class="Kichiku">
+                <div class="Kichiku-kedu">
+                    <span><i class="icon icon-youb"></i></span>
+                </div>
+                <div class="Kichiku-title">
+                    <span>慢</span>
+                    <span>中</span>
+                    <span>快</span>
                 </div>
             </div>
-            <span class="sound-range-endTime">${curMusicItem.long}</span>
-        </div>
-        <div class="sound-controls">
-            <span class="icon icon-soundRadom"></span>
-            <span class="icon icon-soundforWard"></span>
-            <span class="icon icon-soundState"></span>
-            <span class="icon icon-soundNext"></span>
-            <span class="icon icon-soundMore"></span>
+            <div class="sound-range">
+                <span class="sound-range-curTime">00:00</span>
+                <div class="sound-range-comment">
+                    <div class="circle-range"></div>
+                    <div class="rectangle-range">
+                        <div class="full-rectangle-range"></div>
+                    </div>
+                </div>
+                <span class="sound-range-endTime">${curMusicItem.long}</span>
+            </div>
+            <div class="sound-controls">
+                <span class="icon icon-soundRadom"></span>
+                <span class="icon icon-soundforWard"></span>
+                <span class="icon icon-soundState"></span>
+                <span class="icon icon-soundNext"></span>
+                <span class="icon icon-soundMore"></span>
+            </div>
         </div>`;
 }
 
@@ -362,3 +364,5 @@ function toggleSound(direction){
 
 
 init();
+
+
