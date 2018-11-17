@@ -5,14 +5,18 @@
  * Failed to execute 'transaction' on 'IDBDatabase': One of the specified object stores was not found. 说明找不到存储对象空间
  * Uncaught InvalidStateError: Failed to execute 'transaction' on 'IDBDatabase': A version change transaction is running 更新数据库的事务在执行
  * Uncaught DOMException: Failed to execute 'createObjectStore' on 'IDBDatabase': The database is not running a version change transaction. 创建对象存储必须放在更新版本事务中
- * 数据库配置
+ * 数据库配置获取
  */
-var DatabaseIndex = {
-    'myMusic': {
-        'primary': 'id',
-        'other': ['src', 'name', 'author', 'Album']
-    }
-};
+
+function getTableNameFromObj(tab_name){
+    var DatabaseIndex = {
+        'myMusic': {
+            'primary': 'id', // 主键
+            'other': ['src', 'name', 'author', 'Album'] // 其他的字段
+        }
+    };
+    return DatabaseIndex[tab_name];
+}
 
 //数据库相关变量
 var database;
@@ -24,7 +28,7 @@ function openIndexedDataBase(table_name,version,callback){
     var request = indexedDB.open(table_name,version);
     request.onsuccess = function(event){
         database = event.target.result;
-        //矫正数据库版本
+        //矫正数据库版本,防止因为版本不一造成报错
         if(database.version!=version){
             request = database.setVersion(version);
             request.onsuccess = function(){
@@ -45,24 +49,24 @@ function openIndexedDataBase(table_name,version,callback){
 }
 
 /**
- * 初始化数据库表
- * 犯错的地方（for in索引项和数据位置搞反了）
+ * 初始化数据库表及索引设置
  */
 function initDataBaseTab(tab_name){
-    var isExistDataBaseTab = typeof DatabaseIndex[tab_name]!='undefined'?true:false;
+    var needCreateTable = getTableNameFromObj(tab_name);
+    var isExistDataBaseTab = typeof needCreateTable!='undefined'?true:false;
     if(isExistDataBaseTab){
-        // 创建一个数据库存储对象
+        // 创建一个数据库存储对象，并设置主键
         var objectStore = database.createObjectStore(tab_name, {
             keyPath: 'id',
             autoIncrement: true
         });
         //主键
-        objectStore.createIndex(DatabaseIndex[tab_name].primary, DatabaseIndex[tab_name].primary, {
+        objectStore.createIndex(needCreateTable.primary, needCreateTable.primary, {
             unique: true
         });
         //数据项
-        for(var index in DatabaseIndex[tab_name].other){
-            objectStore.createIndex(DatabaseIndex[tab_name].other[index], DatabaseIndex[tab_name].other[index]);
+        for(var other of needCreateTable.other){
+            objectStore.createIndex(other, other);
         }
     }
 }
@@ -73,46 +77,45 @@ function initDataBaseTab(tab_name){
  * 通过事务来操控数据库
  */
 function selectDataBase(table_name,matches,callback){
-    var isExistMatch = matches != null ? true : false;
     var transaction = database.transaction(table_name);
-    var store = null;//对象存储空间
-    var request = null;
+    var request = null;//游标查询
     var count = 0;
     var resultArray = [];
-    store = transaction.objectStore(table_name);
-        //游标查询
-        request = store.openCursor();
-        request.onsuccess = function(event){
-            var result = event.target.result;
-            if (result) {//判断是否有下一项数据
-                if(isExistMatch){//是否有查询条件
-                    if(result.value[matches.key]===matches.value){//判断条件
-                        matches.callback&&matches.callback();
-                        resultArray.push(result.value);
-                    }
-                }else{
+    // 打开游标查询
+    request = transaction.objectStore(table_name).openCursor();
+    request.onsuccess = function(event){
+        var result = event.target.result;
+        if (result) {//判断是否有下一项数据
+            if(matches){//是否有查询条件
+                if(result.value[matches.key]===matches.value){//判断条件
+                    matches.callback&&matches.callback();
                     resultArray.push(result.value);
                 }
-                // 游标没有遍历完，继续
-                result.continue();
-                count++;
-            } else {
-                callback&&callback(resultArray,count);
+            }else{
+                resultArray.push(result.value);
             }
-        };
-        request.onerror = function (e) {
-            console.log(e);
+            // 游标没有遍历完，继续
+            result.continue();
+            count++;
+        } else {
+            callback&&callback(resultArray,count);
         }
+    };
+    request.onerror = function (e) {
+        console.log(e);
+    }
 }
 
+/**
+ * 添加数据
+ * @param {*} table_name 
+ * @param {*} array 
+ */
 function pushIntoDataBase(table_name,array){
-    var transaction = database.transaction(table_name, "readwrite");
-// 打开存储对象
-    var objectStore = transaction.objectStore(table_name);
-// 添加到数据对象中
-    var i=0,
-        len=array.length;
-    while(i<len){
-        objectStore.add(array[i++]);
+    var objectStore = database.transaction(table_name, "readwrite")
+    .objectStore(table_name);
+    // 添加到数据对象中
+    for(var item of array){
+        objectStore.add(item);
     }
 }

@@ -1,0 +1,108 @@
+.wrap {
+  overflow: hidden;
+}
+.resume-full-screen {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.resume-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #302457;
+}
+.resume-page-frist {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #fff;
+  height: 200px;
+  border-radius: 50%;
+  overflow-y: hidden;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmutdb27pjQv7yF0_FlZcKKvPY-LkL81uRH62YURChOjk5PqFJ);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.resume-psName {
+  margin: 20px 0 10px;
+  font-size: 100px;
+  text-align: center;
+}
+.resume-job {
+  width: 42%;
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: 3px;
+  margin: 0;
+}
+.resume-aboutMore-title,
+.resume-project-title,
+.resume-skill-title {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+.resume-page-thirty {
+  -webkit-transform: translateY(200%);
+          transform: translateY(200%);
+  color: #fff;
+}
+.resume-page-forty {
+  -webkit-transform: translateY(300%);
+          transform: translateY(300%);
+  color: #fff;
+}
+.resume-project-wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+  font-size: 13px;
+  text-align: left;
+  margin-top: 10px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  float: left;
+  margin-top: 5px;
+}
+.resume-project-info {
+  margin-top: 5px;
+  letter-spacing: 3px;
+  line-height: 1.3em;
+}
+.resume-aboutMore-href {
+  margin: 0 auto;
+  margin: 10px 0;
+  color: #fff;
+  text-decoration: none;
+}
+.icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.icon-git {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgaGVpZ2h0PSIzMiIgY2xhc3M9Im9jdGljb24gb2N0aWNvbi1tYXJrLWdpdGh1YiIgdmlld0JveD0iMCAwIDE2IDE2IiB2ZXJzaW9uPSIxLjEiIHdpZHRoPSIzMiIgYXJpYS1oaWRkZW49InRydWUiPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTggMEMzLjU4IDAgMCAzLjU4IDAgOGMwIDMuNTQgMi4yOSA2LjUzIDUuNDcgNy41OS40LjA3LjU1LS4xNy41NS0uMzggMC0uMTktLjAxLS44Mi0uMDEtMS40OS0yLjAxLjM3LTIuNTMtLjQ5LTIuNjktLjk0LS4wOS0uMjMtLjQ4LS45NC0uODItMS4xMy0uMjgtLjE1LS42OC0uNTItLjAxLS41My42My0uMDEgMS4wOC41OCAxLjIzLjgyLjcyIDEuMjEgMS44Ny44NyAyLjMzLjY2LjA3LS41Mi4yOC0uODcuNTEtMS4wNy0xLjc4LS4yLTMuNjQtLjg5LTMuNjQtMy45NSAwLS44Ny4zMS0xLjU5LjgyLTIuMTUtLjA4LS4yLS4zNi0xLjAyLjA4LTIuMTIgMCAwIC42Ny0uMjEgMi4yLjgyLjY0LS4xOCAxLjMyLS4yNyAyLS4yNy42OCAwIDEuMzYuMDkgMiAuMjcgMS41My0xLjA0IDIuMi0uODIgMi4yLS44Mi40NCAxLjEuMTYgMS45Mi4wOCAyLjEyLjUxLjU2LjgyIDEuMjcuODIgMi4xNSAwIDMuMDctMS44NyAzLjc1LTMuNjUgMy45NS4yOS4yNS41NC43My41NCAxLjQ4IDAgMS4wNy0uMDEgMS45My0uMDEgMi4yIDAgLjIxLjE1LjQ2LjU1LjM4QTguMDEzIDguMDEzIDAgMCAwIDE2IDhjMC00LjQyLTMuNTgtOC04LTh6Ij48L3BhdGg+PC9zdmc+);
+}

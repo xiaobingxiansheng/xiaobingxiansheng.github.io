@@ -23,6 +23,7 @@ h1,h2,h3{
 }
 .icon-start{
     background-image: url("../img/controls/start.png");
+    margin-left: 4px;
 }
 .icon-pause{
     background-image: url("../img/controls/pause.png");
@@ -57,11 +58,12 @@ h1,h2,h3{
 }
 .first-title{
     color:#545454;
-    font-size:16px;
+    font-size: 14px;
 }
 .second-title{
     color:#9c9c9c;
-    font-size:16px;
+    font-size: 10px;
+    margin-top: 2px;
 }
 .toast{
     position: fixed;
@@ -101,17 +103,13 @@ body{
 /**
 播放列表
  */
-.allStartMusic{
-padding:10px 0 10px 15px;
-}
-.allStartMusic>h1{
-font-size:15px;
-}
+.allStartMusic{padding: 10px 0 10px 7px;}
+.allStartMusic>h1{font-size: 14px;}
 .music-list-container{
-    padding-left:15px;
+    padding-left: 7px;
 }
 .music-list-item{
-    height: 70px;
+    height: 49px;
     border-top:1px solid #dce1df;
     display: flex;
     align-items: center;
@@ -127,7 +125,7 @@ footer{
     align-items: center;
     width:100%;
     height:65px;
-    padding:5px;
+    padding: 7px;
     bottom:0;
     background:#fff;
 }
@@ -137,15 +135,15 @@ footer{
     align-items: center;
 }
 .music-info>hgroup{
-    margin-left: 15px;
+    margin-left: 6px;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .music-info-AlbumImg{
-    width:50px;
-    height:50px;
+    width: 45px;
+    height: 45px;
 }
 .music-control-circle{
     width:40px;
@@ -225,6 +223,10 @@ footer{
     background: url(../img/listenning/disc_default.png);
     background-size: cover;
     overflow: hidden;
+}
+.inner-sound-record img{
+    max-width:none;
+    height: 100%;
 }
 .sound-record-container:before{
     /**
@@ -372,9 +374,6 @@ footer{
         width: 88px;
         height: 125px;
     }
-    .sound-controls-container > div {
-        margin:2px 0;
-    }
 }
 @media (min-width:360px) {
     .sound-record-container:before {
@@ -390,7 +389,7 @@ footer{
         height: 180px;
     }
     .sound-controls-container > div {
-        margin:10px 0;
+        margin:5px 0;
     }
 }
 @media (min-width:375px) and (min-height:812px)  {
@@ -425,15 +424,15 @@ footer{
         padding-top:105px;
     }
     .outer-sound-record {
-        width: 290px;
-        height: 290px;
+        width: 250px;
+        height: 250px;
     }
     .inner-sound-record{
-        width: 190px;
-        height: 190px;
+        width: 150px;
+        height: 150px;
     }
     .sound-controls-container > div {
-        margin:10px 0;
+        margin:0;
     }
 }
 @media (min-width:412px) and (min-height:732px) {
