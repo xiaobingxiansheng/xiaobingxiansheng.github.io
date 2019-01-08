@@ -1,0 +1,17 @@
+@media screen and (max-width: 500px) {
+  .resume-page-frist .resume-title {
+    display: none;
+  }
+  .resume-job {
+    font-size: 12px;
+  }
+  .circle-head-img {
+    width: 80px;
+    height: 80px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .resume-project-name {
+    font-size: 0;
+  }
+}
