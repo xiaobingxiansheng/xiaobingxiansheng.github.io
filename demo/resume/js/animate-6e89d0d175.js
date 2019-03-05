@@ -19,8 +19,8 @@ function animateTimer(jq_item){
 
 
 function resumeNameAnimate(){
-  const text = `我是一个前端学习者，曾就职于某特科技有限公司，负责公众号应用开发，拥有1年的项目经验，目前正在学习流行的框架，可以使用Vue、React做一些小Demo，
-  熟悉ES6，接触过Gulp、Webpack、yeoman等自动化构建工具。本页面也是利用本人使用的yeoman脚手架生成，技术使用原生JavaScript和HTML5+CSS3。`
+  const text = `我是一个前端学习者，曾就职于某特科技有限公司，负责公众号应用开发，拥有1年的项目经验。目前正在学习大厂React框架经验，在业外能够尽力去提升和记录自己
+  ，本人了解ES6，了解Gulp、Webpack等自动化构建工具，本页面用于展示和记录自己的学习，目前处于初步阶段，期待未来有更多出彩的地方来丰富这个页面，技术使用原生JavaScript和HTML5+CSS3。 感谢！`
   var index = 0;
 
   setTimeout(function(){
