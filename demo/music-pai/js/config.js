@@ -4,12 +4,12 @@
 var dataMessage = [
      {
         id: 0,
-        src: "audio/林志炫 - 御龙铭千古.mp3",
-        name: "御龙铭千古",
+        src: "audio/你在最近的天边-林志炫.mp3",
+        name: "你在最近的天边",
         author: "林志炫",
-        long: "05:01",
+        long: "03:58",
         Album: {
-            imgUrl: "img/御龙铭千古.jpg"
+            imgUrl: "img/你在最近的天边.jpg"
         }
     }, {
         id: 1,
