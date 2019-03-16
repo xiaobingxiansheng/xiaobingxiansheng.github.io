@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/mui.picker.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/ex-mui.css" />
+    <link rel="stylesheet" type="text/css" href="css/weather.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <style>
+        .icon {
+            width: 1em;
+            height: 1em;
+            vertical-align: -0.15em;
+            fill: currentColor;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+	
+  <!-- 主页面容器 -->
+  <div class="mui-inner-wrap">
+    <div class="mui-content mui-scroll-wrapper" id="refreshContainer">
+		<div class="city">
+	        <span id="updateCurCity" class="mui-icon mui-icon-plusempty"></span>
+	        <span id="cityNow"></span>
+	    </div>
+      <div class="mui-scroll" id="offCanvasShow" >
+        <div id="all">
+            
+            <div class="temperature">
+                <span class="updateTime">刚刚更新</span>
+                <span class="specificValue">
+                    <div id="curTemp" class="degrees"></div>
+                    <div class="weather">
+                        <span>℃</span>
+                        <span>小雨</span>
+                    </div>
+                </span>
+            </div>
+            <div class="promptingTitle">
+                <span id="weatherTips"></span>
+            </div>
+            <div class="twoday-wrap">
+                <div class="twoday-content" id="todayWeather">
+                    <!-- <div class="twoday-info">
+                        <div class="twoday-info-inline">
+                            今天<span class="mui-badge mui-badge-success twoday-quailty">优质</span>
+                        </div>
+                        <span>15~23℃</span>
+                    </div>
+                    <div class="twoday-type">
+                        <img src="images/sunlight.png"><span class="tips">阴转小雨</span>
+                    </div> -->
+                </div>
+                <div class="twoday-content" id="tomorrowWeather">
+                    <!-- <div class="twoday-info">
+                        <div class="twoday-info-inline">
+                            昨天<span class="mui-badge mui-badge-success twoday-quailty">优质</span>
+                        </div>
+                        <span>15~23℃</span>
+                    </div>
+                    <div class="twoday-type">
+                        <img src="images/sunlight.png"><span class="tips">阴转小雨</span>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="allDay-w-table-wrap">
+                <div class="allWeak-head">
+                    24小时温度预报图
+                </div>
+                <div class="allDay-w-table">
+                    
+                </div>
+            </div>
+
+            <div class="allWeak-head" id="changeMapToListBtn">
+                <div class="circular">
+                    <div class="trend">
+                        趋势
+                    </div>
+                    <div class="list">
+                        列表
+                    </div>
+                </div>
+            </div>
+            <div class="mui-slider-wrap">
+                <div class="mui-slider" id="mui-slider">
+                    <div class="mui-slider-group">
+                        <!--第一个内容区容器-->
+                        <div class="mui-slider-item" >
+                            <div class="allWeek-w-table-wrap" id="allWeek-w-table-wrap">
+                                
+                            </div>
+                            <div class="allWeek-w-table">
+                                
+                            </div>
+                        </div>
+                        <!--第二个内容区-->
+                        <div class="mui-slider-item">
+                            <ul id="allWeek-w-table-list">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weatherIndex">
+                <div class="sign">
+                    <ul class="mui-table-view">
+                        <li class="mui-table-view-cell mui-collapse mui-active mui-unfold">
+                            <!-- <a class="mui-navigate-right">
+                                嵌入九宫格
+                            </a> -->
+                            <ul class="mui-table-view mui-grid-view mui-grid-9">
+                                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+                                    <a href="#">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-fusheradiation2"></use>
+                                        </svg>
+                                        <div class="mui-media-body">紫外线指数</div>
+                                        <div class="mui-media-body" id="UVIndex"></div>
+                                    </a>
+                                </li>
+                                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+                                    <a href="#">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-yundong"></use>
+                                        </svg>
+                                        <div class="mui-media-body">运动指数</div>
+                                        <div class="mui-media-body" id="motionIndex"></div>
+                                    </a>
+                                </li>
+                                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+                                    <a href="#">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-xiche"></use>
+                                        </svg>
+                                        <div class="mui-media-body">洗车指数</div>
+                                        <div class="mui-media-body" id="washCarIndex"></div>
+                                    </a>
+                                </li>
+                                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+                                    <a href="#">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-iconxt"></use>
+                                        </svg>
+                                        <div class="mui-media-body">健臻·血糖指数</div>
+                                        <div class="mui-media-body" id="bloodSugarIndex"></div>
+                                    </a>
+                                </li>
+                                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+                                    <a href="#">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-yifu"></use>
+                                        </svg>
+                                        <div class="mui-media-body">穿衣指数</div>
+                                        <div class="mui-media-body" id="wearIndex"></div>
+                                    </a>
+                                </li>
+                                <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
+                                    <a href="#">
+                                        <svg class="icon" aria-hidden="true">
+                                            <use xlink:href="#icon-wuranyuanguanli"></use>
+                                        </svg>
+                                        <div class="mui-media-body">空气污染扩散指数</div>
+                                        <div class="mui-media-body" id="AirPollutionIndex"></div>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!--</div>-->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+
+    <script src="js/mui.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        mui.init();
+    </script>
+    <script src="js/mui.picker.min.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/echarts-tempture.js"></script>
+    <script src="js/city-data3.js"></script>
+    <script src="js/iconfont.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
